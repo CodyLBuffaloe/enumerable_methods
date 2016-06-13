@@ -33,6 +33,15 @@ module Enumerable
     end
 
     def my_select(&block)
+
+       self.my_each do |element|
+
+            yield(element)
+
+       end
+
+        self
+
     end
 
 
