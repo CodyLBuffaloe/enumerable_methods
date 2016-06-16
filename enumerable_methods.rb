@@ -35,7 +35,7 @@ module Enumerable
     def my_select(&block)
 
        self.my_each do |element|
-
+            return enum_for(:my_select) unless block_given?
             yield(element)
 
        end
