@@ -33,15 +33,17 @@ module Enumerable
     end
 
     def my_select(&block)
-
+        all_true_els = []
        self.my_each do |element|
             return enum_for(:my_select) unless block_given?
-            yield(element)
+            this_el = yield(element)
+            if (this_el == true)
+                all_true_els << element 
+
+            end
 
        end
-
-        self
-
+        return all_true_els
     end
 
     def my_all?(&block)
