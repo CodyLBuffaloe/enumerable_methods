@@ -49,10 +49,8 @@ module Enumerable
     def my_all?(&block)
 
         are_all_true = false
-
+        if block_given?
             self.my_each do |element|
-
-                if block_given?
 
                     are_all_true = yield(element)
 
@@ -60,11 +58,17 @@ module Enumerable
                         return are_all_true
                         break
                     end
+            end
+        else
+            self.my_each do |element|
+                if(element == false || element == nil)
+                    are_all_true = false
+                    break
                 else
                     are_all_true = true
                 end
-
             end
+        end
         return are_all_true
     end
 
@@ -73,12 +77,14 @@ module Enumerable
 
         self.my_each do |element|
 
-            if(block_given? || element == true)
+            if block_given?
                 are_any_true = yield(element)
                 if(are_any_true == true)
-                    return are_any_true = true
+                    are_any_true = true
                     break
                 end
+            else
+
             end
 
         end
