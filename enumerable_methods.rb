@@ -36,16 +36,15 @@ module Enumerable
         return all_true_els
     end
 
-    def my_all?(&block)
+    def my_all?(&block) # Do all els match block criteria
         are_all_true = false
         if block_given?
             self.my_each do |element|
-
-                    are_all_true = yield(element)
-                    if (are_all_true == false)
-                        return are_all_true
-                        break
-                    end
+                are_all_true = yield(element)
+                if (are_all_true == false)
+                    return are_all_true
+                    break
+                end
             end
         else
             self.my_each do |element|
@@ -75,11 +74,34 @@ module Enumerable
             self.my_each do |element|
                 if(element == true)
                     are_any_true = true
-                    break
                 end
             end
         end
         return are_any_true
+    end
+
+    def my_none?(&block) #Do none of the elements match the block criteria
+        are_all_false = true
+        if block_given?
+
+            self.my_each do |element|
+                is_el_true = yield(element)
+                if(is_el_true == true)
+                    are_all_false = false
+                    break
+                else
+
+                end
+            end
+        else
+            self.my_each do |element|
+                if(element == true)
+                    are_all_false = false
+                    break
+                end
+            end
+        end
+        return are_all_false
     end
 
 end
