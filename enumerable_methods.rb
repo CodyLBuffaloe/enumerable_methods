@@ -89,8 +89,6 @@ module Enumerable
                 if(is_el_true == true)
                     are_all_false = false
                     break
-                else
-
                 end
             end
         else
@@ -103,5 +101,33 @@ module Enumerable
         end
         return are_all_false
     end
+
+    def my_count(is_item_present = nil)
+        num_of_els = 0
+
+        if block_given?
+            self.my_each do |element|
+                is_it_true = yield(element)
+                if(is_it_true == true)
+                    num_of_els+=1
+                end
+
+            end
+        elsif(!block_given?)||(is_item_present)
+            if(is_item_present)
+                self.my_each do |element|
+                    if(is_item_present == element)
+                        num_of_els+=1
+                    end
+                end
+            else
+                self.my_each do |element|
+                    num_of_els+=1
+                end
+            end
+        end
+        return num_of_els
+    end
+
 
 end
