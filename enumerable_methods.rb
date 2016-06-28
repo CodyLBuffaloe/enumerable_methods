@@ -129,5 +129,8 @@ module Enumerable
         return num_of_els
     end
 
+    def my_map
+    end
+
 
 end
