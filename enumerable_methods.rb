@@ -130,6 +130,10 @@ module Enumerable
     end
 
     def my_map
+        if block_given?
+        else
+           return enum_for(:my_map)
+        end
     end
 
 
