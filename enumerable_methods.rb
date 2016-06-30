@@ -130,7 +130,12 @@ module Enumerable
     end
 
     def my_map
+        mapped_array = []
         if block_given?
+            self.my_each do |element|
+                mapped_array<< yield(element)
+            end
+            return mapped_array
         else
            return enum_for(:my_map)
         end
