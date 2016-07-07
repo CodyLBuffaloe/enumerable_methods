@@ -141,5 +141,39 @@ module Enumerable
         end
     end
 
+    def my_inject(*arg)
+        i = 0
+        if(arg.empty?)
+            arg = self.to_a[0]
+
+            while(i < (self.length - 1) )
+                arg = yield(arg, self[(i+1)])
+                i+=1
+            end
+            return arg
+        else
+=begin
+This bit here doesn't work. Couldn't figure out how to get around the coercion error.
+Array can't be coerced into Fixnum. 
+            sum = 0
+            operand = arg.first
+            while(i < (self.length - 1))
+                puts arg.is_a?
+
+                i+=1 */
+            end
+=end
+            puts "I don't take arguments."
+
+        end
+
+   end
+
+
+
+
+end
+def multiply_els(arr)
+   arr.my_inject{|product, element| product * element}
 
 end
