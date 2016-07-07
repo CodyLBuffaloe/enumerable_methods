@@ -136,6 +136,11 @@ module Enumerable
                 mapped_array<< yield(element)
             end
             return mapped_array
+        elsif(block_given?) && (proc.class == Proc)
+
+            self.my_each do |element|
+                mapped_array << Proc.new.call(element)
+            end
         else
            return enum_for(:my_map)
         end
@@ -154,7 +159,7 @@ module Enumerable
         else
 =begin
 This bit here doesn't work. Couldn't figure out how to get around the coercion error.
-Array can't be coerced into Fixnum. 
+Array can't be coerced into Fixnum.
             sum = 0
             operand = arg.first
             while(i < (self.length - 1))
