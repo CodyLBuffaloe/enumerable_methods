@@ -158,17 +158,14 @@ module Enumerable
             return arg
         else
 =begin
-This bit here doesn't work. Couldn't figure out how to get around the coercion error.
-Array can't be coerced into Fixnum.
             sum = 0
-            operand = arg.first
             while(i < (self.length - 1))
-                puts arg.is_a?
-
-                i+=1 */
+                arg = arg.first
+                sum = yield(arg, self[i])
+                i+=1
             end
-=end
-            puts "I don't take arguments."
+            return sum
+ =end
 
         end
 
