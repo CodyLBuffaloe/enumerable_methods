@@ -145,7 +145,7 @@ module Enumerable
            return enum_for(:my_map)
         end
     end
-
+=begin
     def my_inject(*arg)
         i = 0
         if(arg.empty?)
@@ -170,12 +170,11 @@ module Enumerable
         end
 
    end
+  def multiply_els(arr)
+    arr.my_inject{|product, element| product * element}
 
+  end
 
-
-
-end
-def multiply_els(arr)
-   arr.my_inject{|product, element| product * element}
+=end
 
 end
