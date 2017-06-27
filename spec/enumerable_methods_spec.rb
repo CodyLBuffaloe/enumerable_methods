@@ -51,4 +51,50 @@ describe Enumerable do
       end
     end
   end
+  describe ".my_any?" do
+    context "given all true" do
+      it "returns true" do
+        arr = [2, 4, 6]
+        expect(arr.my_any?{|x| x.even?}).to eql(true)
+      end
+    end
+    context "given all false" do
+      it "returns false" do
+        arr = [2, 4, 6]
+        expect(arr.my_any?{|x| x.odd?}).to eql(false)
+      end
+    end
+    context "given all false and no block" do
+      it "evaluates to false" do
+        arr = [nil, false, nil]
+        expect(arr.my_any?).to eql(false)
+      end
+    end
+  end
+  describe ".my_none?" do
+    context "given all true" do
+      it "returns false" do
+        arr = [2, 4, 6]
+        expect(arr.my_none?{|x| x.even?}).to eql(false)
+      end
+    end
+    context "given all false" do
+      it "returns true" do
+        arr = [2, 4, 6]
+        expect(arr.my_none?{|x| x.odd?}).to eql(true)
+      end
+    end
+    context "given all false and no block" do
+      it "returns true" do
+        arr = [nil, false, nil]
+        expect(arr.my_none?).to eql(true)
+      end
+    end
+    context "given all 'true' and no block" do
+      it "returns false" do
+        arr = [0, "cat", {:canine => "Dog"}, true]
+        expect(arr.my_none?).to eql(false)
+      end
+    end
+  end
 end
