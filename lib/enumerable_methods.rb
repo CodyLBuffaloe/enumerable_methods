@@ -94,7 +94,7 @@ module Enumerable
       return are_all_false
     end
 
-    def my_count(is_item_present = nil)
+    def my_count(is_item_present = nil) #Returns the number of items in enumerable. If block.given? then returns count of enumerables that satisfy block
       num_of_els = 0
       if block_given?
         self.my_each do |element|
@@ -119,7 +119,7 @@ module Enumerable
       return num_of_els
     end
 
-    def my_map
+    def my_map #Returns a new array w/the results of the running block. If no block, returns enum
       mapped_array = []
       if block_given?
         self.my_each do |element|

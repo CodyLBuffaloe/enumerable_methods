@@ -97,4 +97,36 @@ describe Enumerable do
       end
     end
   end
+  describe "my_count" do
+    context "given Array w/ 4 elements and no block" do
+      it "returns 4 as count" do
+        arr = [1, 2, 3, 4]
+        expect(arr.my_count).to eql(4)
+      end
+    end
+    context "given my_count(2)" do
+      it "returns count of all 2s in Array" do
+        arr = [1, 2, 3, 42, 25, 2, 3, 2, 4]
+        expect(arr.my_count(2)).to eql(3)
+      end
+    end
+    context "given a block and an Array" do
+      it "returns count of elements that match block condition" do
+        arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+        expect(arr.my_count{|x| x%2 == 0}).to eql(5)
+      end
+      it "returns number of matching elements" do
+        arr = [2, 4, 6, 8, 10]
+        expect(arr.my_count{|x| x%2 != 0}).to eql(0)
+      end
+    end
+  end
+  describe ".my_map" do
+    context "given block" do
+      it "returns new array using block conditions" do
+        arr = [1, 2, 3]
+        expect(arr.map{|x| x*2}).to eql([2, 4, 6])
+      end
+    end
+  end
 end
