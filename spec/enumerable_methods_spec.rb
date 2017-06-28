@@ -128,5 +128,9 @@ describe Enumerable do
         expect(arr.map{|x| x*2}).to eql([2, 4, 6])
       end
     end
+    context "given no block" do
+        arr = [1, 2, 3]
+        specify { expect(arr.my_map).to be}
+    end
   end
 end
